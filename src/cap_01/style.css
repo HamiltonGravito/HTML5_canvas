@@ -1,0 +1,40 @@
+body {
+    background: #dddddd;
+}
+
+#ex_01 canvas {
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+}
+
+#ex_02 canvas {
+    margin: 10px ;
+    padding: 10px ;
+    background: #ffffff ;
+    border: thin inset #aaaaaa ;
+    width: 600px ;
+    height: 300px ;
+}
+
+#ex_03 canvas {
+    margin: 10px ;
+    padding: 10px ;
+    background: #ffffff ;
+    border: thin inset #aaaaaa ;
+}
+
+#ex_04 canvas {
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset rgba(100, 150, 230, 0.5);
+    cursor: pointer;
+}
+
+#ex_04 #readout {
+    margin-top: 10px;
+    margin-left: 15px;
+    color: blue;
+}

@@ -256,9 +256,9 @@ function rubberbandEnd() {
     resetRubberbandRectangle();
 
     rubberbandDiv.style.width = 0;
-    rubberbandDiv.sty.height = 0;
+    rubberbandDiv.style.height = 0;
 
-    hiderubberandDiv();
+    hiderubberbandDiv();
 
     dragging = false;
 }
@@ -277,7 +277,7 @@ function showRubberbandDiv() {
     rubberbandDiv.style.display = 'inline';
 }
 
-function hiderubberandDiv(){
+function hiderubberbandDiv(){
     rubberbandDiv.style.display = 'none';
 }
 
@@ -287,8 +287,9 @@ function resetRubberbandRectangle(){
 
 // Eventos
 ex06.addEventListener('mousedown', (event) => {
-    let x = event.clientX;
-    let y = event.clientY;
+    let bbox = canvasEx06.getBoundingClientRect();
+    let x = (event.clientX - bbox.left) * (canvasEx06.width / bbox.width);
+    let y = (event.clientY - bbox.top) * (canvasEx06.height / bbox.height);
 
     event.preventDefault();
 
@@ -296,8 +297,9 @@ ex06.addEventListener('mousedown', (event) => {
 }, false);
 
 ex06.addEventListener('mousemove', (event) => {
-    let x = event.clientX;
-    let y = event.clientY;
+    let bbox = canvasEx06.getBoundingClientRect();
+    let x = (event.clientX - bbox.left) * (canvasEx06.width / bbox.width);
+    let y = (event.clientY - bbox.top) * (canvasEx06.height / bbox.height);
 
     event.preventDefault();
 
@@ -312,10 +314,12 @@ ex06.addEventListener('mouseup', (event) => {
 }, false);
 
 image.addEventListener('load', (event) => {
+    event.preventDefault();
     contextEx06.drawImage(image, 0, 0, canvasEx06.width, canvasEx06.height);
 }, false);
 
 resetButton.addEventListener('click', (event) => {
+    event.preventDefault();
     contextEx06.clearRect(0, 0, contextEx06.canvas.width, contextEx06.canvas.height);
     contextEx06.drawImage(image, 0, 0, canvasEx06.width, canvasEx06.height);
 });

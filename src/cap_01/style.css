@@ -115,6 +115,7 @@ body {
 #ex_06 #controls{
     position: absolute;
     margin: 20px 0px 20px 20px;
+    z-index: 10;
 }
 
 #ex_06 #rubberbandDiv{

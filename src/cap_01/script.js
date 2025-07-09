@@ -39,6 +39,11 @@ const ex03 = document.getElementById('ex_03');
 let canvasEx03 = ex03.querySelector('canvas');
 let contextEx03 = canvasEx03.getContext('2d');
 
+// Definição dos elementos de Foto
+const snapshotButton = ex03.querySelector('#snapshotButton');
+const snapshotImageElement = ex03.querySelector('#snapshotImageElement');
+let loop;
+
 // Definições do Relógio
 const TAMANHO_FONTE = 15;
 const MARGEM = 35;
@@ -97,6 +102,24 @@ function drawClock() {
     drawCenter();
     drawHands();
 }
+
+//Evento de foto
+snapshotButton.addEventListener('click', (e) => {
+    let dataURL;
+    if(snapshotButton.value === "Take Snapshot"){
+        dataURL = canvasEx03.toDataURL();
+        clearInterval(loop);
+        snapshotImageElement.src = dataURL;
+        snapshotImageElement.style.display = 'inline';
+        canvasEx03.style.display = 'none';
+        snapshotButton.value = 'Return to Canvas';
+    } else {
+        canvasEx03.style.display = 'inline';
+        snapshotImageElement.style.display = 'none';
+        loop = setInterval(drawClock, 1000);
+        snapshotButton.value = 'Take Snapshot';
+    }
+}, false);
 
 // Inicialização
 contextEx03.font = TAMANHO_FONTE + "px Arial";

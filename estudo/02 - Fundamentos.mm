@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752011605979" ICON_SIZE="36 pt" STYLE="oval">
+<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752103892302" ICON_SIZE="36 pt" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
@@ -93,7 +93,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="19" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="21" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <edge COLOR="#ffffff"/>
 <richcontent TYPE="DETAILS">
@@ -104,6 +104,12 @@
   <body>
     <p>
       Obs.: Os elementos canvas podem ser implementados por qualquer software, não apenas navegadores. Ex.: Apps desktop ou mobile híbridos, que usam um motor de navegador embutido (como Electron, WebView, WKWebView).
+    </p>
+    <p>
+      
+    </p>
+    <p>
+      Obs.: Importante aprender: Resolução de questões algébricas; Trigonometria -&gt; Ângulos (Graus e Radianos), Seno, Cosseno e Tangente; Vetores; Magnitude Vetorial; Vetores Unitários; Adição e Subtração de Vetores; Produto escalar de dois vetores;
     </p>
   </body>
 </html></richcontent>
@@ -542,7 +548,7 @@
   </body>
 </html></richcontent>
 </node>
-<node TEXT="06 - Tratamento de Eventos" POSITION="bottom_or_right" ID="ID_446858152" CREATED="1751916199284" MODIFIED="1751916650275" HGAP_QUANTITY="179.75 pt" VSHIFT_QUANTITY="-284.99999 pt">
+<node TEXT="06 - Tratamento de Eventos" POSITION="bottom_or_right" ID="ID_446858152" CREATED="1751916199284" MODIFIED="1752098658728" HGAP_QUANTITY="272 pt" VSHIFT_QUANTITY="-7.5 pt">
 <edge COLOR="#7c0000"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -621,7 +627,7 @@
   </body>
 </html></richcontent>
 </node>
-<node TEXT="08 - Usando elementos HTML no canvas" POSITION="top_or_left" ID="ID_773276477" CREATED="1752013534622" MODIFIED="1752013940823" HGAP_QUANTITY="371.74999 pt" VSHIFT_QUANTITY="-33.75 pt">
+<node TEXT="08 - Usando elementos HTML no canvas" POSITION="top_or_left" ID="ID_773276477" CREATED="1752013534622" MODIFIED="1752101346066" HGAP_QUANTITY="371.74999 pt" VSHIFT_QUANTITY="-2.25 pt">
 <edge COLOR="#007c00"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -631,6 +637,61 @@
   <body>
     <p>
       Muitas vezes é preciso combinar um ou mais elementos canvas com outros elementos HTML. Os navegadores exibirão um elemento canvas ou controles HTML que ccoloca dentro deles, mas NÃO AMBOS, é preciso colocar os controles fora dos elementos canvas e posicioná-los com CSS.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="09 - Imprimindo um canvas" POSITION="bottom_or_right" ID="ID_2729958" CREATED="1752098641970" MODIFIED="1752101163390" HGAP_QUANTITY="265.99999 pt" VSHIFT_QUANTITY="-238.49999 pt">
+<edge COLOR="#7c007c"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Por padrão, no canvas embora cada tela seja um bitmap, ela não é um &lt;img&gt; dentro do HTML e portanto, não se pode salvar um canvas como uma imagem..
+    </p>
+    <p>
+      Obs.: toDataUrl transforma a imagem em string base64 o que pode consumir muita memória, enquanto, toBlob tranforma em arquivo (padrão png).
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="toDataURL()" ID="ID_77423528" CREATED="1752098899651" MODIFIED="1752101169904" HGAP_QUANTITY="14 pt" VSHIFT_QUANTITY="2.25 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Porém esse método retorna uma referência a uma url dedados para uma determinada tela. Então é possível definir um atributo src de um elemento img igual a essa url de dados para transformar o canvas em uma imagem.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="toBlob()" ID="ID_376856185" CREATED="1752100842982" MODIFIED="1752100902827"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Esse método permite, entre outras coisas, salvar uma tela como um arquivo.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="10 - Telas fora do Canvas" POSITION="top_or_left" ID="ID_132749285" CREATED="1752101337087" MODIFIED="1752101436975" HGAP_QUANTITY="372.49999 pt" VSHIFT_QUANTITY="-12 pt">
+<edge COLOR="#007c7c"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A ideia é que seja uma imagem animada, sem a interação do usuário para a transformação.
     </p>
   </body>
 </html></richcontent>

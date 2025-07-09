@@ -14,7 +14,7 @@ desenharTextoPadrao(contextEx02)
 
 
 // Função para desenhar texto padrão dos primeiros exemplos
-function desenharTextoPadrao(ctx, texto = 'Olá Canvas') {
+function desenharTextoPadrao(ctx, texto = 'Hello Canvas') {
     
     // Define os atributos do contexto
     ctx.font = '38pt Arial';
@@ -183,4 +183,142 @@ spriteSheet.onload = function (e) {
 drawBackground();
 
 
-// TRATAMENTO DE EVENTOS (TECLADO)
+// USANDO ELEMENTOS HTML EM UM CANVAS
+const ex05 = document.getElementById('ex_05');
+let canvasEx05 = ex05.querySelector('canvas');
+let contextEx05 = canvasEx05.getContext('2d');
+const startButton = ex05.querySelector('#startButton');
+const glasspane = ex05.querySelector('#glasspane')
+let paused = false;
+
+startButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    paused = ! paused;
+    startButton.innerHTML = paused ? "Start" : "Stop";
+}, false);
+
+glasspane.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+}, false);
+
+
+// ELEMENTOS HTML INVISÍVEIS
+const ex06 = document.getElementById('ex_06');
+const canvasEx06 = ex06.querySelector('canvas');
+const contextEx06 = canvasEx06.getContext('2d');
+const rubberbandDiv = ex06.querySelector('#rubberbandDiv');
+const resetButton = ex06.querySelector('#resetButton');
+let image = new Image();
+let mousedown = {};
+let rubberbandRetangle = {};
+let dragging = false;
+
+// Funções para efeito Elástico
+function rubberbandStart(x, y) {
+    mousedown.x = x;
+    mousedown.y = y;
+
+    rubberbandRetangle.left = mousedown.x;
+    rubberbandRetangle.top = mousedown.y;
+
+    moveRubberbandDiv();
+    showRubberbandDiv();
+
+    dragging = true;
+}
+
+function rubberbandStretch(x, y) {
+    rubberbandRetangle.left = x < mousedown.x ? x : mousedown.x;
+    rubberbandRetangle.top = y < mousedown.y ? y : mousedown.y;
+
+    rubberbandRetangle.width = Math.abs(x - mousedown.x);
+    rubberbandRetangle.height = Math.abs(y - mousedown.y);
+
+    moveRubberbandDiv();
+    resizeRubberbandDiv();
+}
+
+function rubberbandEnd() {
+    const bbox = canvasEx06.getBoundingClientRect();
+    try {
+        contextEx06.drawImage(
+            canvasEx06,
+            rubberbandRetangle.left - bbox.left,
+            rubberbandRetangle.top - bbox.top,
+            rubberbandRetangle.width,
+            rubberbandRetangle.height,
+            0, 0, canvasEx06.width, canvasEx06.height
+        );
+    } catch (error) {
+        console.error(error);
+    }
+
+    resetRubberbandRectangle();
+
+    rubberbandDiv.style.width = 0;
+    rubberbandDiv.sty.height = 0;
+
+    hiderubberandDiv();
+
+    dragging = false;
+}
+
+function moveRubberbandDiv(){
+    rubberbandDiv.style.top = rubberbandRetangle.top + 'px';
+    rubberbandDiv.style.left = rubberbandRetangle.left + 'px';
+}
+
+function resizeRubberbandDiv(){
+    rubberbandDiv.style.width = rubberbandRetangle.width + 'px';
+    rubberbandDiv.style.height = rubberbandRetangle.height + 'px';
+}
+
+function showRubberbandDiv() {
+    rubberbandDiv.style.display = 'inline';
+}
+
+function hiderubberandDiv(){
+    rubberbandDiv.style.display = 'none';
+}
+
+function resetRubberbandRectangle(){
+    rubberbandRetangle = {top: 0, left: 0, width: 0, height: 0}
+}
+
+// Eventos
+ex06.addEventListener('mousedown', (event) => {
+    let x = event.clientX;
+    let y = event.clientY;
+
+    event.preventDefault();
+
+    rubberbandStart(x, y);
+}, false);
+
+ex06.addEventListener('mousemove', (event) => {
+    let x = event.clientX;
+    let y = event.clientY;
+
+    event.preventDefault();
+
+    if(dragging){
+        rubberbandStretch(x, y)
+    }
+}, false);
+
+ex06.addEventListener('mouseup', (event) => {
+    event.preventDefault();
+    rubberbandEnd();
+}, false);
+
+image.addEventListener('load', (event) => {
+    contextEx06.drawImage(image, 0, 0, canvasEx06.width, canvasEx06.height);
+}, false);
+
+resetButton.addEventListener('click', (event) => {
+    contextEx06.clearRect(0, 0, contextEx06.canvas.width, contextEx06.canvas.height);
+    contextEx06.drawImage(image, 0, 0, canvasEx06.width, canvasEx06.height);
+});
+
+// Inicialização
+image.src = '../../images/img/desert.png'

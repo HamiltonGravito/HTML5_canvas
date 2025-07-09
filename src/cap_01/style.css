@@ -38,3 +38,88 @@ body {
     margin-left: 15px;
     color: blue;
 }
+
+#ex_05{
+    position: relative;
+    height: auto;
+    width: fit-content;
+    margin-bottom: 40px;
+}
+
+#ex_05 canvas {
+    position: relative;
+    display: block;
+    margin: 0px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin solid #aaaaaa;
+}
+
+#ex_05 #glasspane {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    padding: 0px 20px 10px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #eeeeee;
+    font-family: Droid Sans, Arial, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 20px;
+}
+
+#ex_05 #glasspane h2{
+    font-weight: normal;
+}
+
+#ex_05 #glasspane .title{
+    font-size: 2em;
+    color: rgba(255, 255, 0, 0.8);
+}
+
+#ex_05 #glasspane a:hover{
+    color: yellow;
+}
+
+#ex_05 #glasspane a{
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 3.5em;
+}
+
+#ex_05 #glasspane p{
+    margin: 10px;
+    color: rgba(65, 65, 220, 1.0);
+    font-size: 12pt;
+    font-family: Palatino, Arial, Helvetica, sans-serif;
+}
+
+#ex_06{
+    position: relative;
+    height: 520px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#ex_06 canvas{
+    position: relative;
+    display: block;
+    margin: 0;
+    border: thin solid #aaaaaa;
+    cursor: crosshair;
+    padding: 0;
+}
+
+#ex_06 #controls{
+    position: absolute;
+    margin: 20px 0px 20px 20px;
+}
+
+#ex_06 #rubberbandDiv{
+    position: absolute;
+    border: 3px solid blue;
+    cursor: crosshair;
+    display: none;
+}

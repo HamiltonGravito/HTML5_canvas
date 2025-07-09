@@ -1,9 +1,9 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1751905623033" ICON_SIZE="36 pt" STYLE="oval">
+<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752011605979" ICON_SIZE="36 pt" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_icons="BESIDE_NODES" associatedTemplateLocation="template:/BuzanMap.mm" show_tags="UNDER_NODES"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -93,7 +93,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="17" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="19" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <edge COLOR="#ffffff"/>
 <richcontent TYPE="DETAILS">
@@ -528,7 +528,7 @@
 </html></richcontent>
 </node>
 </node>
-<node TEXT="03 - Contexto 3D WebGL" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1751905757335" LINK="https://registry.khronos.org/webgl/specs/latest/2.0/" HGAP_QUANTITY="364.7439 pt" VSHIFT_QUANTITY="-52.5 pt">
+<node TEXT="03 - Contexto 3D WebGL" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1752013494885" LINK="https://registry.khronos.org/webgl/specs/latest/2.0/" HGAP_QUANTITY="370.7439 pt" VSHIFT_QUANTITY="-0.75 pt">
 <edge COLOR="#ff9900"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -567,6 +567,73 @@
   </body>
 </html></richcontent>
 </node>
+<node TEXT="Teclado" ID="ID_1379973365" CREATED="1752010932523" MODIFIED="1752011198925"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Os eventos do teclado são direcionados ao elemento HTML que está em foco no momento. Se nenhum elemento estiver em foco, os eventos são recebidos pelos objetos window e document (canvas não é um elemento focável então se utilizará dos objetos window e document).
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="keyCode" ID="ID_214788206" CREATED="1752011336147" MODIFIED="1752011471546"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Em geral para carateres imprimíveis, os valores recebidos por esse evento são códigos ASCII.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="Toques" ID="ID_1932683648" CREATED="1752011536007" MODIFIED="1752011580651"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Dá suporte à smartphones e tablets.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="07 - Salvando e Restaurando a Superfície de Desenho" POSITION="top_or_left" ID="ID_391269900" CREATED="1752011600042" MODIFIED="1752013545359" HGAP_QUANTITY="371.74999 pt" VSHIFT_QUANTITY="3.75 pt">
+<edge COLOR="#00007c"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Permite desenhar na tela temporariamente.
+    </p>
+    <p>
+      Gráficos de Modo Imediato -&gt; Significa que o canvas desenha na tela imediatamente o que for especificado. E em seguida, ele esquece imediatamente o que acabou de desenhar (não mantém uma lista de objetos para desenhar).
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="08 - Usando elementos HTML no canvas" POSITION="top_or_left" ID="ID_773276477" CREATED="1752013534622" MODIFIED="1752013940823" HGAP_QUANTITY="371.74999 pt" VSHIFT_QUANTITY="-33.75 pt">
+<edge COLOR="#007c00"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Muitas vezes é preciso combinar um ou mais elementos canvas com outros elementos HTML. Os navegadores exibirão um elemento canvas ou controles HTML que ccoloca dentro deles, mas NÃO AMBOS, é preciso colocar os controles fora dos elementos canvas e posicioná-los com CSS.
+    </p>
+  </body>
+</html></richcontent>
 </node>
 </node>
 </map>

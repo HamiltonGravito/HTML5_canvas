@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Efeito de Fluido em Canvas</title>
-    <script src="./dat.gui.min.js"></script>
     <style>
         *{
             user-select: none;
@@ -22,31 +21,17 @@
             height: 100vh;
         }
 
-        .dg.ac {
-            display: none;
-        }
-
         canvas {
             width: 100vw;
             height: 100vh;
         }
     </style>
     <script>
-        window.ga = 
-            window.ga || 
-            function () {
-                (ga.q = ga.q || []).push(arguments);
-            };
-        ga.l = +new Date();
-        ga('create', 'UA-105392568-1', 'auto');
-        ga('send', 'pageview');
+        window.ga = function(){}
     </script>
 </head>
 <body>
     <canvas></canvas>
-    <div class="board">
-        <span class="board-close">&times;</span>
-    </div>
 
     <script src="./fluid.js"></script>
 </body>

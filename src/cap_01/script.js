@@ -209,7 +209,6 @@ const contextEx06 = canvasEx06.getContext('2d');
 const rubberbandDiv = ex06.querySelector('#rubberbandDiv');
 const resetButton = ex06.querySelector('#resetButton');
 let image = new Image();
-let smallImage = new Image();
 let mousedown = {};
 let rubberbandRetangle = {};
 let dragging = false;
@@ -240,12 +239,11 @@ function rubberbandStretch(x, y) {
 }
 
 function rubberbandEnd() {
-    const bbox = canvasEx06.getBoundingClientRect();
     try {
         contextEx06.drawImage(
             canvasEx06,
-            rubberbandRetangle.left - bbox.left,
-            rubberbandRetangle.top - bbox.top,
+            rubberbandRetangle.left,
+            rubberbandRetangle.top,
             rubberbandRetangle.width,
             rubberbandRetangle.height,
             0, 0, canvasEx06.width, canvasEx06.height

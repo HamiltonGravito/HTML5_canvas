@@ -30,32 +30,81 @@ const canvas = document.getElementsByTagName('canvas')[0];
 resizeCanvas();
 
 let config = {
-    SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1024,
+    // Resolução da simulação (números menores = mais rápido, menos detalhe)
+    SIM_RESOLUTION: 64,
+
+    // Resolução da tinta/cor (números menores = menos detalhe na cor)
+    DYE_RESOLUTION: 512,
+
+    // Resolução da captura de tela (não afeta a simulação em tempo real)
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 1,
-    VELOCITY_DISSIPATION: 0.2,
-    PRESSURE: 0.8,
+
+    // Dissipação da densidade (como a cor/tinta se espalha e desaparece)
+    DENSITY_DISSIPATION: 10,
+
+    // Dissipação da velocidade (como o movimento se espalha e diminui)
+    VELOCITY_DISSIPATION: 0.5,
+
+    // Pressão (influencia como o fluido reage a si mesmo)
+    PRESSURE: 0.7,
+
+    // Iterações de pressão (quanto maior, mais preciso, mas mais caro computacionalmente)
     PRESSURE_ITERATIONS: 20,
-    CURL: 30,
-    SPLAT_RADIUS: 0.25,
-    SPLAT_FORCE: 6000,
+
+    // Curl/Vorticidade (controla o quão "turbulento" o fluido é)
+    CURL: 25,
+
+    // Raio do "respingo" (tamanho da área afetada por um clique/interação)
+    SPLAT_RADIUS: 0.4,
+
+    // Força do "respingo" (intensidade do impacto de um clique/interação)
+    SPLAT_FORCE: 5000,
+
+    // Sombreamento (efeito visual que adiciona profundidade)
     SHADING: true,
+
+    // Colorido (as interações adicionam cores aleatórias)
     COLORFUL: true,
+
+    // Velocidade de atualização das cores
     COLOR_UPDATE_SPEED: 10,
+
+    // Pausar a simulação (defina como `false` para que ela inicie rodando)
     PAUSED: false,
+
+    // Cor de fundo (objeto RGBA, onde r, g, b são de 0-255)
     BACK_COLOR: { r: 0, g: 0, b: 0 },
+
+    // Fundo transparente (útil se você for sobrepor em outro elemento HTML)
     TRANSPARENT: false,
+
+    // Efeito de Bloom (brilho difuso)
     BLOOM: true,
+
+    // Iterações do Bloom (qualidade do efeito)
     BLOOM_ITERATIONS: 8,
+
+    // Resolução do Bloom
     BLOOM_RESOLUTION: 256,
-    BLOOM_INTENSITY: 0.8,
+
+    // Intensidade do Bloom
+    BLOOM_INTENSITY: 0.7,
+
+    // Limite do Bloom (pixels acima desse brilho geram bloom)
     BLOOM_THRESHOLD: 0.6,
+
+    // Suavidade do joelho do Bloom (transição suave para o efeito)
     BLOOM_SOFT_KNEE: 0.7,
+
+    // Raios Solares (efeito de "raios de luz")
     SUNRAYS: true,
+
+    // Resolução dos Raios Solares
     SUNRAYS_RESOLUTION: 196,
+
+    // Peso dos Raios Solares
     SUNRAYS_WEIGHT: 1.0,
-}
+};
 
 function pointerPrototype () {
     this.id = -1;
@@ -86,7 +135,6 @@ if (!ext.supportLinearFiltering) {
     config.SUNRAYS = false;
 }
 
-startGUI();
 
 function getWebGLContext (canvas) {
     const params = { alpha: true, depth: false, stencil: false, antialias: false, preserveDrawingBuffer: false };
@@ -176,81 +224,6 @@ function supportRenderTextureFormat (gl, internalFormat, format, type) {
 
     let status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
     return status == gl.FRAMEBUFFER_COMPLETE;
-}
-
-function startGUI () {
-    var gui = new dat.GUI({ width: 300 });
-    gui.add(config, 'DYE_RESOLUTION', { 'high': 1024, 'medium': 512, 'low': 256, 'very low': 128 }).name('quality').onFinishChange(initFramebuffers);
-    gui.add(config, 'SIM_RESOLUTION', { '32': 32, '64': 64, '128': 128, '256': 256 }).name('sim resolution').onFinishChange(initFramebuffers);
-    gui.add(config, 'DENSITY_DISSIPATION', 0, 4.0).name('density diffusion');
-    gui.add(config, 'VELOCITY_DISSIPATION', 0, 4.0).name('velocity diffusion');
-    gui.add(config, 'PRESSURE', 0.0, 1.0).name('pressure');
-    gui.add(config, 'CURL', 0, 50).name('vorticity').step(1);
-    gui.add(config, 'SPLAT_RADIUS', 0.01, 1.0).name('splat radius');
-    gui.add(config, 'SHADING').name('shading').onFinishChange(updateKeywords);
-    gui.add(config, 'COLORFUL').name('colorful');
-    gui.add(config, 'PAUSED').name('paused').listen();
-
-    gui.add({ fun: () => {
-        splatStack.push(parseInt(Math.random() * 20) + 5);
-    } }, 'fun').name('Random splats');
-
-    let bloomFolder = gui.addFolder('Bloom');
-    bloomFolder.add(config, 'BLOOM').name('enabled').onFinishChange(updateKeywords);
-    bloomFolder.add(config, 'BLOOM_INTENSITY', 0.1, 2.0).name('intensity');
-    bloomFolder.add(config, 'BLOOM_THRESHOLD', 0.0, 1.0).name('threshold');
-
-    let sunraysFolder = gui.addFolder('Sunrays');
-    sunraysFolder.add(config, 'SUNRAYS').name('enabled').onFinishChange(updateKeywords);
-    sunraysFolder.add(config, 'SUNRAYS_WEIGHT', 0.3, 1.0).name('weight');
-
-    let captureFolder = gui.addFolder('Capture');
-    captureFolder.addColor(config, 'BACK_COLOR').name('background color');
-    captureFolder.add(config, 'TRANSPARENT').name('transparent');
-    captureFolder.add({ fun: captureScreenshot }, 'fun').name('take screenshot');
-
-    let github = gui.add({ fun : () => {
-        window.open('https://github.com/PavelDoGreat/WebGL-Fluid-Simulation');
-        ga('send', 'event', 'link button', 'github');
-    } }, 'fun').name('Github');
-    github.__li.className = 'cr function bigFont';
-    github.__li.style.borderLeft = '3px solid #8C8C8C';
-    let githubIcon = document.createElement('span');
-    github.domElement.parentElement.appendChild(githubIcon);
-    githubIcon.className = 'icon github';
-
-    let twitter = gui.add({ fun : () => {
-        ga('send', 'event', 'link button', 'twitter');
-        window.open('https://twitter.com/PavelDoGreat');
-    } }, 'fun').name('Twitter');
-    twitter.__li.className = 'cr function bigFont';
-    twitter.__li.style.borderLeft = '3px solid #8C8C8C';
-    let twitterIcon = document.createElement('span');
-    twitter.domElement.parentElement.appendChild(twitterIcon);
-    twitterIcon.className = 'icon twitter';
-
-    let discord = gui.add({ fun : () => {
-        ga('send', 'event', 'link button', 'discord');
-        window.open('https://discordapp.com/invite/CeqZDDE');
-    } }, 'fun').name('Discord');
-    discord.__li.className = 'cr function bigFont';
-    discord.__li.style.borderLeft = '3px solid #8C8C8C';
-    let discordIcon = document.createElement('span');
-    discord.domElement.parentElement.appendChild(discordIcon);
-    discordIcon.className = 'icon discord';
-
-    let app = gui.add({ fun : () => {
-        ga('send', 'event', 'link button', 'app');
-        window.open('http://onelink.to/5b58bn');
-    } }, 'fun').name('Check out mobile app');
-    app.__li.className = 'cr function appBigFont';
-    app.__li.style.borderLeft = '3px solid #00FF7F';
-    let appIcon = document.createElement('span');
-    app.domElement.parentElement.appendChild(appIcon);
-    appIcon.className = 'icon app';
-
-    if (isMobile())
-        gui.close();
 }
 
 function isMobile () {
@@ -1434,7 +1407,7 @@ function correctRadius (radius) {
     return radius;
 }
 
-canvas.addEventListener('mousedown', e => {
+canvas.addEventListener('mouseenter', e => {
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY);
     let pointer = pointers.find(p => p.id == -1);

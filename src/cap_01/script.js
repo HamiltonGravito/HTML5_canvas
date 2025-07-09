@@ -209,6 +209,7 @@ const contextEx06 = canvasEx06.getContext('2d');
 const rubberbandDiv = ex06.querySelector('#rubberbandDiv');
 const resetButton = ex06.querySelector('#resetButton');
 let image = new Image();
+let smallImage = new Image();
 let mousedown = {};
 let rubberbandRetangle = {};
 let dragging = false;
@@ -325,4 +326,4 @@ resetButton.addEventListener('click', (event) => {
 });
 
 // Inicialização
-image.src = '../../images/img/desert.png'
+image.src = '../../images/img/desert.png';

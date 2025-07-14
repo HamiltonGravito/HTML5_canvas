@@ -138,3 +138,41 @@ ex05_2.addEventListener('click', (event) => {
     const y = event.clientY - rect.top;
     drawEraser(x, y);
 });
+
+// Traçado e Preenchimento
+const ex06_2 = document.getElementById('ex_06_2');
+let canvasEx06_2 = ex06_2.querySelector('canvas');
+let contextEx06_2 = canvasEx06_2.getContext('2d');
+
+function drawGrid(context, color, stepx, stepy) {
+    context.strokeStyle = color;
+    context.lineWidth = 0.5;
+
+    for (var i = stepx +  0.5; i < context.canvas.width; i += stepx) {
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, context.canvas.height);
+        context.stroke();
+    }
+
+    for (var i = stepy + 0.5; i < context.canvas.height; i += stepy) {
+        context.beginPath();
+        context.moveTo(0, i);
+        context.lineTo(context.canvas.width, i);
+        context.stroke();
+    }
+}
+
+drawGrid(contextEx06_2, '#ccc', 10, 10);
+
+contextEx06_2.font = '48px Helvetica';
+contextEx06_2.strokeStyle = 'blue';
+contextEx06_2.fillStyle = 'red';
+contextEx06_2.lineWidth = 2;
+
+contextEx06_2.strokeText('Stroke', 60, 110);
+contextEx06_2.fillText('Fill', 440, 110);
+contextEx06_2.strokeText('Stroke and Fill', 650, 110);
+contextEx06_2.fillText('Stroke and Fill', 650, 110);
+
+

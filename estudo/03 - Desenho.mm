@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752508674876" ICON_SIZE="36 pt" STYLE="oval">
+<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752524425465" ICON_SIZE="36 pt" LINK="../src/cap_02/index.html" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_icons="BESIDE_NODES" associatedTemplateLocation="template:/BuzanMap.mm" show_tags="UNDER_NODES"/>
@@ -93,7 +93,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="15" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="16" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <edge COLOR="#ffffff"/>
 <richcontent TYPE="DETAILS">
@@ -322,6 +322,20 @@
 <edge COLOR="#0000ff"/>
 <node TEXT="IDEA 4.1" ID="ID_317662625" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="14.87805 pt" VSHIFT_QUANTITY="-18.43903 pt"/>
 <node TEXT="IDEA 4.2" ID="ID_1522387997" CREATED="1610381622021" MODIFIED="1610381622021"/>
+</node>
+<node TEXT="04 - Stroke, Fill e Stroke &amp; Fill" POSITION="bottom_or_right" ID="ID_32401591" CREATED="1752523964764" MODIFIED="1752524297995" HGAP_QUANTITY="80.75 pt" VSHIFT_QUANTITY="-83.25 pt">
+<edge COLOR="#00ffff"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Normalmente se define um caminho que posteriormente pode ser traçado, preenchido ou ambos.
+    </p>
+  </body>
+</html></richcontent>
 </node>
 </node>
 </map>

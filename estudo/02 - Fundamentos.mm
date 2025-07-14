@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752103892302" ICON_SIZE="36 pt" STYLE="oval">
+<node TEXT="Fundamentos" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752524372408" ICON_SIZE="36 pt" LINK="../src/cap_01/index.html" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>

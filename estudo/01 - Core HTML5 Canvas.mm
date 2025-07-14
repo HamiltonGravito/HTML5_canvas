@@ -3,7 +3,7 @@
 <node TEXT="Core HTML5&#xa; Canvas" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1751894322892" ICON_SIZE="36 pt" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_icons="BESIDE_NODES" associatedTemplateLocation="template:/BuzanMap.mm" show_tags="UNDER_NODES"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -96,7 +96,7 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="20" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <edge COLOR="#ffffff"/>
-<node TEXT="01 - Capítulo 1/Fundamentos" POSITION="bottom_or_right" ID="ID_273436263" CREATED="1610381622018" MODIFIED="1751896411449" LINK="02%20-%20Fundamentos.mm#ID_191153586" HGAP_QUANTITY="111.5183 pt" VSHIFT_QUANTITY="26.26829 pt">
+<node TEXT="01 - Capítulo 1/ Fundamentos" POSITION="bottom_or_right" ID="ID_273436263" CREATED="1610381622018" MODIFIED="1752500046319" LINK="02%20-%20Fundamentos.mm#ID_191153586" HGAP_QUANTITY="111.5183 pt" VSHIFT_QUANTITY="26.26829 pt">
 <edge COLOR="#007c7c"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -110,7 +110,7 @@
   </body>
 </html></richcontent>
 </node>
-<node TEXT="02 - Capítulo 2/Desenho" POSITION="bottom_or_right" ID="ID_495676614" CREATED="1610381622019" MODIFIED="1751894481969" HGAP_QUANTITY="108.55488 pt" VSHIFT_QUANTITY="-0.14634 pt">
+<node TEXT="02 - Capítulo 2/Desenho" POSITION="bottom_or_right" ID="ID_495676614" CREATED="1610381622019" MODIFIED="1752500032511" LINK="03%20-%20Desenho.mm#ID_191153586" HGAP_QUANTITY="108.55488 pt" VSHIFT_QUANTITY="-0.14634 pt">
 <edge COLOR="#009900"/>
 <richcontent TYPE="DETAILS">
 <html>

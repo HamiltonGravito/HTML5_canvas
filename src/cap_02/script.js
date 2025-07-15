@@ -144,6 +144,169 @@ const ex06_2 = document.getElementById('ex_06_2');
 let canvasEx06_2 = ex06_2.querySelector('canvas');
 let contextEx06_2 = canvasEx06_2.getContext('2d');
 
+drawGrid(contextEx06_2, '#ccc', 10, 10);
+
+contextEx06_2.font = '48px Helvetica';
+contextEx06_2.strokeStyle = 'blue';
+contextEx06_2.fillStyle = 'red';
+contextEx06_2.lineWidth = 2;
+
+contextEx06_2.strokeText('Stroke', 60, 110);
+contextEx06_2.fillText('Fill', 440, 110);
+contextEx06_2.strokeText('Stroke and Fill', 650, 110);
+contextEx06_2.fillText('Stroke and Fill', 650, 110);
+
+contextEx06_2.lineWidth = '5';
+contextEx06_2.beginPath();
+contextEx06_2.rect(80, 150, 150, 100);
+contextEx06_2.stroke();
+
+contextEx06_2.beginPath();
+contextEx06_2.rect(400, 150, 150, 100);
+contextEx06_2.fill();
+
+contextEx06_2.beginPath();
+contextEx06_2.rect(720, 150, 150, 100);
+contextEx06_2.stroke();
+contextEx06_2.fill();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(150, 350, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.stroke();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(475, 350, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.fill();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(800, 350, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.stroke();
+contextEx06_2.fill();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(150, 500, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.closePath();
+contextEx06_2.stroke();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(475, 500, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.closePath();
+contextEx06_2.fill();
+
+contextEx06_2.beginPath();
+contextEx06_2.arc(800, 500, 60, 0, Math.PI * 3/2, false);
+contextEx06_2.closePath();
+contextEx06_2.stroke();
+contextEx06_2.fill();
+
+// Caminhos e Subcaminhos
+const ex07_2 = document.getElementById('ex_07_2');
+let canvasEx07_2 = ex07_2.querySelector('canvas');
+let contextEx07_2 = canvasEx07_2.getContext('2d');
+
+contextEx07_2.beginPath();
+contextEx07_2.rect(50, 50, 100, 100);
+contextEx07_2.stroke();
+
+contextEx07_2.beginPath(); // Ao comentar esta linha, o subcaminho criado será o mesmo e todos os dois quadrados serão preenchidos (redesenha o primeiro retângulo)
+contextEx07_2.rect(200, 50, 100, 100);
+contextEx07_2.fill();
+
+// Recortes (Usando regra enrolamento diferente de zero)
+const ex08_2 = document.getElementById('ex_08_2');
+let canvasEx08_2 = ex08_2.querySelector('canvas');
+let contextEx08_2 = canvasEx08_2.getContext('2d');
+
+drawGrid(contextEx08_2, 'gray', 10, 10);
+
+function drawTwoArcs(){
+    contextEx08_2.beginPath();
+    contextEx08_2.arc(300, 190, 150, 0, Math.PI * 2, false); // O último argumento é false para desenhar o arco no sentido horário
+    contextEx08_2.arc(300, 190, 100, 0, Math.PI * 2, true); // Como os círculos são desenhados com sentidos diferentes há um corte na área de dentro deles
+    contextEx08_2.fill();
+
+    contextEx08_2.shadowColor = undefined;
+    contextEx08_2.shadowOffsetX = 0;
+    contextEx08_2.shadowOffsetY = 0;
+    contextEx08_2.stroke();
+}
+
+function drawArcs(){
+    contextEx08_2.clearRect(0, 0, canvasEx08_2.width, canvasEx08_2.height);
+    drawGrid(contextEx08_2, 'gray', 10, 10);
+    contextEx08_2.save();
+
+    contextEx08_2.shadowColor = 'rgba(0, 0, 0, 0.8)';
+    contextEx08_2.shadowOffsetX = 12;
+    contextEx08_2.shadowOffsetY = 12;
+    contextEx08_2.shadowBlur = 15;
+
+    drawTwoArcs();
+
+    contextEx08_2.restore();
+}
+
+contextEx08_2.fillStyle = 'rgba(100, 140, 230, 0.5)';
+contextEx08_2.strokeStyle = contextEx08_2.fillStyle;
+drawArcs();
+
+// Recortes (Outras Formas)
+const ex09_2 = document.getElementById('ex_09_2');
+let canvasEx09_2 = ex09_2.querySelector('canvas');
+let contextEx09_2 = canvasEx09_2.getContext('2d');
+
+function drawOtherForms(){
+    contextEx09_2.clearRect(0, 0, canvasEx09_2.width, canvasEx09_2.height);
+    drawGrid(contextEx09_2, 'gray', 10, 10);
+    contextEx09_2.save();
+
+    contextEx09_2.shadowColor = 'rgba(200, 200, 0, 0.5)';
+    contextEx09_2.shadowOffsetX = 12;
+    contextEx09_2.shadowOffsetY = 12;
+    contextEx09_2.shadowBlur = 15;
+
+    drawCutouts();
+    strokeCutoutShapes();
+    contextEx09_2.restore();
+}
+
+contextEx09_2.fillStyle = 'goldenrod';
+drawOtherForms();
+
+function drawCutouts(){
+    contextEx09_2.beginPath();
+    addOtherRectanglePath(contextEx09_2);
+    addRetanglePath();
+
+    addTrianglePath();
+
+    addCirclePath(contextEx09_2);
+
+    contextEx09_2.fill();
+}
+
+function addOtherRectanglePath(context){
+    context.rect(110, 25, 370, 335);
+}
+
+function addRetanglePath(){
+    rect(310, 55, 70, 35, true, contextEx09_2);
+}
+
+function addTrianglePath(){
+    contextEx09_2.moveTo(400, 180);
+    contextEx09_2.lineTo(250, 115);
+    contextEx09_2.lineTo(200, 180);
+    contextEx09_2.closePath();
+}
+
+function addCirclePath(context){
+    context.arc(300, 250, 40, 0, Math.PI * 2, true);
+}
+
+
+
+// Função para desenhar uma grade
 function drawGrid(context, color, stepx, stepy) {
     context.strokeStyle = color;
     context.lineWidth = 0.5;
@@ -163,16 +326,18 @@ function drawGrid(context, color, stepx, stepy) {
     }
 }
 
-drawGrid(contextEx06_2, '#ccc', 10, 10);
-
-contextEx06_2.font = '48px Helvetica';
-contextEx06_2.strokeStyle = 'blue';
-contextEx06_2.fillStyle = 'red';
-contextEx06_2.lineWidth = 2;
-
-contextEx06_2.strokeText('Stroke', 60, 110);
-contextEx06_2.fillText('Fill', 440, 110);
-contextEx06_2.strokeText('Stroke and Fill', 650, 110);
-contextEx06_2.fillText('Stroke and Fill', 650, 110);
-
-
+// Função para desenhar um rect passando o sentido de desenho
+function rect(x, y, w, h, direction, context){
+    if(direction){
+        context.moveTo(x, y);
+        context.lineTo(x, y + h);
+        context.lineTo(x + w, y + h);
+        context.lineTo(x + w, y);
+    } else {
+        context.moveTo(x, y);
+        context.lineTo(x + w, y);
+        context.lineTo(x + w, y + h);
+        context.lineTo(x, y);
+    }
+    context.closePath();
+}

@@ -1,9 +1,9 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752524425465" ICON_SIZE="36 pt" LINK="../src/cap_02/index.html" STYLE="oval">
+<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752598779905" ICON_SIZE="36 pt" LINK="../src/cap_02/index.html" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_icons="BESIDE_NODES" associatedTemplateLocation="template:/BuzanMap.mm" show_tags="UNDER_NODES"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -93,7 +93,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="16" RULE="ON_BRANCH_CREATION"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="17" RULE="ON_BRANCH_CREATION"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <edge COLOR="#ffffff"/>
 <richcontent TYPE="DETAILS">
@@ -107,7 +107,7 @@
     </p>
   </body>
 </html></richcontent>
-<node TEXT="01 - Sistemas de Coordenadas" POSITION="bottom_or_right" ID="ID_273436263" CREATED="1610381622018" MODIFIED="1752508681436" HGAP_QUANTITY="91.2683 pt" VSHIFT_QUANTITY="43.51829 pt">
+<node TEXT="01 - Sistemas de Coordenadas" POSITION="bottom_or_right" ID="ID_273436263" CREATED="1610381622018" MODIFIED="1752599152978" HGAP_QUANTITY="91.2683 pt" VSHIFT_QUANTITY="90.76829 pt">
 <edge COLOR="#007c7c"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -124,7 +124,7 @@
   </body>
 </html></richcontent>
 </node>
-<node TEXT="02 - Desenhando Retângulos" POSITION="bottom_or_right" ID="ID_495676614" CREATED="1610381622019" MODIFIED="1752510172169" HGAP_QUANTITY="93.55488 pt" VSHIFT_QUANTITY="-42.14634 pt">
+<node TEXT="02 - Desenhando Retângulos" POSITION="bottom_or_right" ID="ID_495676614" CREATED="1610381622019" MODIFIED="1752598791636" HGAP_QUANTITY="86.80488 pt" VSHIFT_QUANTITY="-3.89634 pt">
 <edge COLOR="#009900"/>
 <node TEXT="clearRect(x, y, w, h)" ID="ID_744391648" CREATED="1610381622019" MODIFIED="1752508984027" HGAP_QUANTITY="15.7561 pt" VSHIFT_QUANTITY="31.57317 pt"><richcontent TYPE="DETAILS">
 <html>
@@ -313,17 +313,69 @@
 </node>
 </node>
 </node>
-<node TEXT="IDEA 5" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="84.24391 pt" VSHIFT_QUANTITY="-36 pt">
+<node TEXT="05 - Caminhos e Subcaminhos" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1752600407986" HGAP_QUANTITY="84.24391 pt" VSHIFT_QUANTITY="-36 pt">
 <edge COLOR="#ff9900"/>
-<node TEXT="IDEA 5.1" ID="ID_1274507163" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="14 pt" VSHIFT_QUANTITY="-21.07317 pt"/>
-<node TEXT="IDEA 5.2" ID="ID_1203076641" CREATED="1610381622020" MODIFIED="1610381622020"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Em um dado momento só existe um caminho para determinada tela, ao qual o canvas se refere como caminho atual. Esse caminho, no entanto, pode consistir em vários subcaminhos (dois ou mais pontos) e o método&#xa0;&#xa0;beginPath() limpa todos os subcaminhos do caminho atual.
+    </p>
+    <p>
+      Obs.: Toda vez que o beginPath() é chamado há um novo caminho atual.
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="Enrolamento Diferente de Zero" ID="ID_1274507163" CREATED="1610381622020" MODIFIED="1752601242348" HGAP_QUANTITY="14 pt" VSHIFT_QUANTITY="-22.57317 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Se o caminho atual retornar a si mesmo ou se houver vários subcaminhos no caminho atual que se cruzam, o contexto do canvas precisa descobrir como preencher o caminho atual quando o método&#xa0;fill() for invocado.
+    </p>
+  </body>
+</html></richcontent>
+<hook URI="img/enrolamentoDiferenteDeZero.png" SIZE="0.67156863" NAME="ExternalObject"/>
+<node TEXT="Regra" ID="ID_1756301305" CREATED="1752600765431" MODIFIED="1752601250312" VSHIFT_QUANTITY="-13.5 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Para qualquer área específica do caminho, desenhe uma linha reta de dentro da área até que a linha seja longa o suficiente para que o segundo ponto da linha fique completamente fora do caminho.
+    </p>
+    <p>
+      Inicializar um contador como zero e, sempre que a linha cruzar uma reta ou curva no próprio caminho, adicionar um ao contador para segmentos no sentido horário do caminho e subtrair um do contador para segmentos no sentido anti-horário. Se a contagem final for diferente de zero, a área estará dentro do caminho e o navegador a preencherá quando você invocar fill().
+    </p>
+  </body>
+</html></richcontent>
 </node>
-<node TEXT="IDEA 4" POSITION="top_or_left" ID="ID_575079876" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="67.56098 pt" VSHIFT_QUANTITY="-42.14634 pt">
+</node>
+<node TEXT="Recortes" ID="ID_1203076641" CREATED="1610381622020" MODIFIED="1752604161775"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Enquanto arc() permite controlar a direção do arco (último atributo false/true), o método rect() sempre cria um caminho no sentido horário (para recortes é importante gerar um retângulo no sentido anti-horário).
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="IDEA 4" POSITION="top_or_left" ID="ID_575079876" CREATED="1610381622020" MODIFIED="1752606420929" HGAP_QUANTITY="213.81098 pt" VSHIFT_QUANTITY="-62.39634 pt">
 <edge COLOR="#0000ff"/>
 <node TEXT="IDEA 4.1" ID="ID_317662625" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="14.87805 pt" VSHIFT_QUANTITY="-18.43903 pt"/>
 <node TEXT="IDEA 4.2" ID="ID_1522387997" CREATED="1610381622021" MODIFIED="1610381622021"/>
 </node>
-<node TEXT="04 - Stroke, Fill e Stroke &amp; Fill" POSITION="bottom_or_right" ID="ID_32401591" CREATED="1752523964764" MODIFIED="1752524297995" HGAP_QUANTITY="80.75 pt" VSHIFT_QUANTITY="-83.25 pt">
+<node TEXT="04 - Stroke, Fill e Stroke &amp; Fill" POSITION="bottom_or_right" ID="ID_32401591" CREATED="1752523964764" MODIFIED="1752606352369" HGAP_QUANTITY="80.75 pt" VSHIFT_QUANTITY="0.75 pt">
 <edge COLOR="#00ffff"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -334,8 +386,50 @@
     <p>
       Normalmente se define um caminho que posteriormente pode ser traçado, preenchido ou ambos.
     </p>
+    <p>
+      Obs.: Caminhos criados por rect() são fechados. No entanto, caminhos criados por arc() não são fechados (é possível usar o método&#xa0;closePath() para fechar o caminho de um arc()), a menos que seja um caminho circular.
+    </p>
   </body>
 </html></richcontent>
+<node TEXT="beginPath()" ID="ID_1182006867" CREATED="1752598856227" MODIFIED="1752599144886" VSHIFT_QUANTITY="6.75 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Gera um caminho &quot;invisível&quot;.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="stroke()" ID="ID_1210463274" CREATED="1752598915178" MODIFIED="1752598961071" VSHIFT_QUANTITY="2.25 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Traça o caminho.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="fill()" ID="ID_134653159" CREATED="1752598916057" MODIFIED="1752598964946" VSHIFT_QUANTITY="-18 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Preenche o caminho.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="06 - Linhas" POSITION="bottom_or_right" ID="ID_343754097" CREATED="1752606345928" MODIFIED="1752606418973" HGAP_QUANTITY="87.5 pt" VSHIFT_QUANTITY="-122.25 pt">
+<edge COLOR="#7c0000"/>
 </node>
 </node>
 </map>

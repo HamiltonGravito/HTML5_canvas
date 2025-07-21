@@ -266,7 +266,6 @@ function drawOtherForms(){
     contextEx09_2.shadowBlur = 15;
 
     drawCutouts();
-    strokeCutoutShapes();
     contextEx09_2.restore();
 }
 
@@ -304,7 +303,108 @@ function addCirclePath(context){
     context.arc(300, 250, 40, 0, Math.PI * 2, true);
 }
 
+// LINHAS
+const ex10_2 = document.getElementById('ex_10_2');
+let canvasEx10_2 = ex10_2.querySelector('canvas');
+let contextEx10_2 = canvasEx10_2.getContext('2d');
 
+contextEx10_2.lineWidth = 1;
+contextEx10_2.beginPath();
+contextEx10_2.moveTo(50, 10); // Move o cursor para a coordenada (50, 10)
+contextEx10_2.lineTo(450, 10); // Desenha uma linha reta do ponto atual até as coordenadas (450, 10)
+contextEx10_2.stroke(); // Faz o traçado linear
+
+contextEx10_2.beginPath();
+contextEx10_2.moveTo(50.5, 50.5);
+contextEx10_2.lineTo(450.5, 50.5);
+contextEx10_2.stroke();
+
+drawGrid(contextEx10_2, '#ccc', 10, 10);
+// EIXOS DE DESENHO
+const AXIS_MARGIN = 40;
+const AXIS_ORIGIN = {x: AXIS_MARGIN, y: canvasEx10_2.height - AXIS_MARGIN};
+const AXIS_TOP = AXIS_MARGIN;
+const AXIS_RIGHT = canvasEx10_2.width - AXIS_MARGIN;
+const HORIZONTAL_TICK_SPACING = 10;
+const VERTICAL_TICK_SPACING = 10;
+const AXIS_WIDTH = AXIS_RIGHT - AXIS_ORIGIN.x;
+const AXIS_HEIGHT = AXIS_ORIGIN.y - AXIS_TOP;
+const NUM_VERTICAL_TICKS = AXIS_HEIGHT / VERTICAL_TICK_SPACING;
+const NUM_HORIZONTAL_TICKS = AXIS_WIDTH / HORIZONTAL_TICK_SPACING;
+const TICK_WIDTH = 10;
+const TICKS_LINEWIDTH = 0.5;
+const TICKS_COLOR = 'navy';
+const AXIS_LINEWIDTH = 1.0;
+const AXIS_COLOR = 'blue';
+
+function drawAxis(context) {
+    context.save();
+    context.strokeStyle = AXIS_COLOR;
+    context.lineWidth = AXIS_LINEWIDTH;
+    
+    drawHorizontalAxis(context);
+    drawVerticalAxis(context);
+
+    context.lineWidth = 0.5;
+    context.lineWidth = TICKS_LINEWIDTH;
+    context.strokeStyle = TICKS_COLOR;
+
+    drawVerticalAxisTicks(context);
+    drawHorizontalAxisTicks(context);
+
+    context.restore();
+}
+
+function drawHorizontalAxis(context) {
+    context.beginPath();
+    context.moveTo(AXIS_ORIGIN.x, AXIS_ORIGIN.y);
+    context.lineTo(AXIS_RIGHT, AXIS_ORIGIN.y);
+    context.stroke();
+}
+
+function drawVerticalAxis(context) {
+    context.beginPath();
+    context.moveTo(AXIS_ORIGIN.x, AXIS_ORIGIN.y);
+    context.lineTo(AXIS_ORIGIN.x, AXIS_TOP);
+    context.stroke();
+}
+
+function drawVerticalAxisTicks(context) {
+    let deltaX;
+    for(let i = 0; i <= NUM_VERTICAL_TICKS; i++) {
+        context.beginPath();
+        if(i % 5 === 0) {
+            deltaX = TICK_WIDTH;
+        } else {
+            deltaX = TICK_WIDTH / 2;
+        }
+            context.moveTo(AXIS_ORIGIN.x - deltaX, AXIS_ORIGIN.y - i * VERTICAL_TICK_SPACING);
+            context.lineTo(AXIS_ORIGIN.x + deltaX, AXIS_ORIGIN.y - i * VERTICAL_TICK_SPACING);
+            context.stroke();
+    }
+}
+
+function drawHorizontalAxisTicks(context) {
+    let deltaY;
+    for(let i = 0; i <= NUM_HORIZONTAL_TICKS; i++) {
+        context.beginPath();
+        if(i % 5 === 0) {
+            deltaY = TICK_WIDTH;
+        } else {
+            deltaY = TICK_WIDTH / 2;
+        }
+        context.moveTo(AXIS_ORIGIN.x + i * HORIZONTAL_TICK_SPACING, AXIS_ORIGIN.y - deltaY);
+        context.lineTo(AXIS_ORIGIN.x + i * HORIZONTAL_TICK_SPACING, AXIS_ORIGIN.y + deltaY);
+        context.stroke();
+    }
+}
+
+drawAxis(contextEx10_2);
+
+// LINHAS DE ELÁSTICO
+const ex11_2 = document.getElementById('ex_11_2');
+let canvasEx11_2 = ex11_2.querySelector('canvas');
+let contextEx11_2 = canvasEx11_2.getContext('2d');
 
 // Função para desenhar uma grade
 function drawGrid(context, color, stepx, stepy) {

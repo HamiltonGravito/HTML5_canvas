@@ -86,3 +86,19 @@ body {
     background: #ffffff;
     border: thin inset #aaaaaa;
 }
+
+#ex_10_2 canvas {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+}
+
+#ex_11_2 canvas {
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: thin inset #aaaaaa;
+}

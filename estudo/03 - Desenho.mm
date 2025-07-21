@@ -428,8 +428,54 @@
 </html></richcontent>
 </node>
 </node>
-<node TEXT="06 - Linhas" POSITION="bottom_or_right" ID="ID_343754097" CREATED="1752606345928" MODIFIED="1752606418973" HGAP_QUANTITY="87.5 pt" VSHIFT_QUANTITY="-122.25 pt">
+<node TEXT="06 - Linhas" POSITION="bottom_or_right" ID="ID_343754097" CREATED="1752606345928" MODIFIED="1753101645209" HGAP_QUANTITY="87.5 pt" VSHIFT_QUANTITY="-122.25 pt">
 <edge COLOR="#7c0000"/>
+<richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Obs.: Se desenhar uma linha de 1 pixel de largura em um limite de pixel (um pixel para um lado e um pixel para outro), a linha terá na verdade 2 pixels de largura. Usar medidas 0.5 (pois assim os pixels são desenhados entre pixels - 0.5 para um lado e 0.5 para outro).
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="" ID="ID_1271444395" CREATED="1753098175466" MODIFIED="1753098175466">
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="moveTo()" ID="ID_1185076945" CREATED="1753098136387" MODIFIED="1753101661023" HGAP_QUANTITY="20.75 pt" VSHIFT_QUANTITY="2.25 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Move o cursor para o ponto (x, y) sem desenhar nenhuma linha.
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="lineTo()" ID="ID_1343970693" CREATED="1753098137242" MODIFIED="1753100101464"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Desenha uma linha reta do ponto atual até o ponto (x, y).
+    </p>
+    <p>
+      Obs.: Se for o primeiro ponto, funciona como moveTo();
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="" ID="ID_234932399" CREATED="1753098175464" MODIFIED="1753098179279">
+<hook NAME="SummaryNode"/>
+<hook NAME="AlwaysUnfoldedNode"/>
+<node TEXT="stroke()" ID="ID_1786697736" CREATED="1753098175466" MODIFIED="1753098196185" HGAP_QUANTITY="24.5 pt" VSHIFT_QUANTITY="-12 pt"/>
+</node>
 </node>
 </node>
 </map>

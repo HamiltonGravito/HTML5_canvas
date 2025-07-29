@@ -404,7 +404,125 @@ drawAxis(contextEx10_2);
 // LINHAS DE ELÁSTICO
 const ex11_2 = document.getElementById('ex_11_2');
 let canvasEx11_2 = ex11_2.querySelector('canvas');
-let contextEx11_2 = canvasEx11_2.getContext('2d');
+let contextEx11_2 = canvasEx11_2.getContext('2d', { willReadFrequently: true });
+const eraseAllButton = ex11_2.querySelector('#eraseAllButton');
+const guidewireCheckbox = ex11_2.querySelector('#guidewireCheckbox');
+const strokeStyleColor = ex11_2.querySelector('#strokeStyleColor');
+let drawingSurfaceImageData;
+let mousedown = {};
+let rubberbandRect = {};
+let dragging = false;
+let guidewire = guidewireCheckbox.checked;
+
+//Funções
+function saveDrawingSurface(){
+    drawingSurfaceImageData = contextEx11_2.getImageData(0, 0, canvasEx11_2.width, canvasEx11_2.height);
+}
+
+function restoreDrawingSurface() {
+    contextEx11_2.putImageData(drawingSurfaceImageData, 0, 0);
+}
+
+function updateRubberbandRectangle(loc){
+    rubberbandRect.width = Math.abs(loc.x - mousedown.x);
+    rubberbandRect.height = Math.abs(loc.y - mousedown.y);
+
+    if(loc.x > mousedown.x) {
+        rubberbandRect.left = mousedown.x;
+    }
+    else {
+        rubberbandRect.left = loc.x;
+    }
+    if(loc.y > mousedown.y) {
+        rubberbandRect.top = mousedown.y;
+    }
+    else {
+        rubberbandRect.top = loc.y;
+    }
+}
+
+function drawRubberbandShape(loc){
+    contextEx11_2.beginPath();
+    contextEx11_2.moveTo(mousedown.x, mousedown.y);
+    contextEx11_2.lineTo(loc.x, loc.y);
+    contextEx11_2.strokeStyle = strokeStyleColor.value;
+    contextEx11_2.lineWidth = 2.5;
+    contextEx11_2.stroke();
+}
+
+function updateRubberband(loc){
+    updateRubberbandRectangle(loc);
+    drawRubberbandShape(loc);
+}
+
+function drawHorizontalLine(y){
+    contextEx11_2.beginPath();
+    contextEx11_2.moveTo(0, y + 0.5);
+    contextEx11_2.lineTo(contextEx11_2.canvas.width, y + 0.5);
+    contextEx11_2.stroke();
+}
+
+function drawVerticalLine(x){
+    contextEx11_2.beginPath();
+    contextEx11_2.moveTo(x + 0.5, 0);
+    contextEx11_2.lineTo(x + 0.5, contextEx11_2.canvas.height);
+    contextEx11_2.stroke();
+}
+
+function drawGuidewire(x, y) {
+    contextEx11_2.save();
+    contextEx11_2.strokeStyle = 'rgba(0, 0, 230, 1)';
+    contextEx11_2.lineWidth = 0.5;
+    drawVerticalLine(x);
+    drawHorizontalLine(y);
+    contextEx11_2.restore();
+}
+
+//Eventos
+canvasEx11_2.addEventListener('mousedown', (event) => {
+    let loc = windowToCanvas(canvasEx11_2, event.clientX, event.clientY);
+    event.preventDefault();
+    saveDrawingSurface();
+    mousedown.x = loc.x;
+    mousedown.y = loc.y;
+    dragging = true;
+});
+
+canvasEx11_2.addEventListener('mousemove', (event) => {
+    let loc;
+    if(dragging) {
+        event.preventDefault();
+        loc = windowToCanvas(canvasEx11_2, event.clientX, event.clientY);
+        restoreDrawingSurface();
+        updateRubberband(loc);
+        if(guidewire) {
+            drawGuidewire(loc.x, loc.y);
+        }
+    }
+});
+
+canvasEx11_2.addEventListener('mouseup', (event) => {
+    loc = windowToCanvas(canvasEx11_2, event.clientX, event.clientY);
+    restoreDrawingSurface();
+    updateRubberband(loc);
+    dragging = false;
+});
+
+eraseAllButton.addEventListener('click', () => {
+    contextEx11_2.clearRect(0, 0, canvasEx11_2.width, canvasEx11_2.height);
+    drawGrid(contextEx11_2, '#ccc', 10, 10);
+    saveDrawingSurface();
+});
+
+strokeStyleColor.addEventListener('change', (event) => {
+    contextEx11_2.strokeStyle = event.target.value;
+});
+
+guidewireCheckbox.addEventListener('change', (event) => {
+    guidewire = event.target.checked;
+});
+
+drawGrid(contextEx11_2, '#ccc', 10, 10);
 
 // Função para desenhar uma grade
 function drawGrid(context, color, stepx, stepy) {
@@ -440,4 +558,13 @@ function rect(x, y, w, h, direction, context){
         context.lineTo(x, y);
     }
     context.closePath();
+}
+
+// Função para usar o contexto canvas ao invés de usar o objeto window
+function windowToCanvas(canvas, x, y) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: x - rect.left * (canvas.width / rect.width),
+        y: y - rect.top * (canvas.height / rect.height)
+    };
 }

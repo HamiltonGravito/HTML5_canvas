@@ -1,6 +1,6 @@
 <map version="freeplane 1.12.1">
 <!--To view this file, download free mind mapping software Freeplane from https://www.freeplane.org -->
-<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1752598779905" ICON_SIZE="36 pt" LINK="../src/cap_02/index.html" STYLE="oval">
+<node TEXT="Desenho" FOLDED="false" ID="ID_191153586" CREATED="1610381622013" MODIFIED="1753918601638" ICON_SIZE="36 pt" LINK="../src/cap_02/index.html" STYLE="oval">
 <font SIZE="22"/>
 <hook NAME="MapStyle">
     <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_tags="UNDER_NODES" associatedTemplateLocation="template:/BuzanMap.mm" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
@@ -313,7 +313,7 @@
 </node>
 </node>
 </node>
-<node TEXT="05 - Caminhos e Subcaminhos" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1752600407986" HGAP_QUANTITY="84.24391 pt" VSHIFT_QUANTITY="-36 pt">
+<node TEXT="05 - Caminhos e Subcaminhos" POSITION="top_or_left" ID="ID_1822402846" CREATED="1610381622020" MODIFIED="1753918605301" HGAP_QUANTITY="84.24391 pt" VSHIFT_QUANTITY="10.5 pt">
 <edge COLOR="#ff9900"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -370,12 +370,34 @@
 </html></richcontent>
 </node>
 </node>
-<node TEXT="IDEA 4" POSITION="top_or_left" ID="ID_575079876" CREATED="1610381622020" MODIFIED="1752606420929" HGAP_QUANTITY="213.81098 pt" VSHIFT_QUANTITY="-62.39634 pt">
+<node TEXT="07 - Arcos e Círculos" POSITION="top_or_left" ID="ID_575079876" CREATED="1610381622020" MODIFIED="1753918868714" HGAP_QUANTITY="175.56098 pt" VSHIFT_QUANTITY="-171.14634 pt">
 <edge COLOR="#0000ff"/>
-<node TEXT="IDEA 4.1" ID="ID_317662625" CREATED="1610381622020" MODIFIED="1610381622020" HGAP_QUANTITY="14.87805 pt" VSHIFT_QUANTITY="-18.43903 pt"/>
-<node TEXT="IDEA 4.2" ID="ID_1522387997" CREATED="1610381622021" MODIFIED="1610381622021"/>
+<node TEXT="arc()" ID="ID_317662625" CREATED="1610381622020" MODIFIED="1753921129043" HGAP_QUANTITY="14.87805 pt" VSHIFT_QUANTITY="32.56097 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Utiliza 6 parâmetros: <span style="font-weight: bold; font-style: italic;">x, y</span>&#xa0;-&gt; Representam a coordena do ponto central de um círculo; <span style="font-weight: bold; font-style: italic;">radius</span>&#xa0;&#xa0;-&gt; Representa o raio do círculo;<span style="font-weight: bold; font-style: italic;">&#xa0;&#xa0;startAngle, endAngle</span>&#xa0;-&gt; Representam o ângulo inicial e o ângulo final do arco que o navegador desenha ao redor da circuferência do círculo; <span style="font-weight: bold; font-style: italic;">counterClockwise</span>&#xa0;&#xa0;-&gt; Opcional e representa a direção na qual o navegador desenha o arco (padrão = false = sentido horário).
+    </p>
+  </body>
+</html></richcontent>
 </node>
-<node TEXT="04 - Stroke, Fill e Stroke &amp; Fill" POSITION="bottom_or_right" ID="ID_32401591" CREATED="1752523964764" MODIFIED="1752606352369" HGAP_QUANTITY="80.75 pt" VSHIFT_QUANTITY="0.75 pt">
+<node TEXT="arcTo()" ID="ID_1522387997" CREATED="1610381622021" MODIFIED="1753921124729"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Utiliza 5 argumentos: <span style="font-weight: bold; font-style: italic;">x1, y1 </span>-&gt; Primeiro ponto; <span style="font-weight: bold; font-style: italic;">x2, y2</span>&#xa0;-&gt; Segundo ponto; <span style="font-weight: bold; font-style: italic;">radius</span>&#xa0;-&gt; raio. Desenha um arco do primeiro ao segundo ponto, com o raio especificado (é adequado para desenhar cantos arredondados).
+    </p>
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node TEXT="04 - Stroke, Fill e Stroke &amp; Fill" POSITION="bottom_or_right" ID="ID_32401591" CREATED="1752523964764" MODIFIED="1753831346063" HGAP_QUANTITY="80.75 pt" VSHIFT_QUANTITY="-12.75 pt">
 <edge COLOR="#00ffff"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -428,7 +450,7 @@
 </html></richcontent>
 </node>
 </node>
-<node TEXT="06 - Linhas" POSITION="bottom_or_right" ID="ID_343754097" CREATED="1752606345928" MODIFIED="1753101645209" HGAP_QUANTITY="87.5 pt" VSHIFT_QUANTITY="-122.25 pt">
+<node TEXT="06 - Linhas" POSITION="bottom_or_right" ID="ID_343754097" CREATED="1752606345928" MODIFIED="1753831618375" HGAP_QUANTITY="87.5 pt" VSHIFT_QUANTITY="-142.5 pt">
 <edge COLOR="#7c0000"/>
 <richcontent TYPE="DETAILS">
 <html>
@@ -441,10 +463,11 @@
     </p>
   </body>
 </html></richcontent>
+<hook URI="img/limites_de_linhas.png" SIZE="0.6305031" NAME="ExternalObject"/>
 <node TEXT="" ID="ID_1271444395" CREATED="1753098175466" MODIFIED="1753098175466">
 <hook NAME="FirstGroupNode"/>
 </node>
-<node TEXT="moveTo()" ID="ID_1185076945" CREATED="1753098136387" MODIFIED="1753101661023" HGAP_QUANTITY="20.75 pt" VSHIFT_QUANTITY="2.25 pt"><richcontent TYPE="DETAILS">
+<node TEXT="moveTo()" ID="ID_1185076945" CREATED="1753098136387" MODIFIED="1753831635120" HGAP_QUANTITY="12.5 pt" VSHIFT_QUANTITY="13.5 pt"><richcontent TYPE="DETAILS">
 <html>
   <head>
     
@@ -475,6 +498,33 @@
 <hook NAME="SummaryNode"/>
 <hook NAME="AlwaysUnfoldedNode"/>
 <node TEXT="stroke()" ID="ID_1786697736" CREATED="1753098175466" MODIFIED="1753098196185" HGAP_QUANTITY="24.5 pt" VSHIFT_QUANTITY="-12 pt"/>
+</node>
+<node TEXT="setLineDash([4, 4]);" ID="ID_1877161581" CREATED="1753751164194" MODIFIED="1753751625094" VSHIFT_QUANTITY="0 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Desenha linhas tracejadas com um padrão de 4 (pixels desenhados) e 4 (pixels de espaço). Obs.: Outro exemplo seria: setLineDash([10, 5, 2, 5])&#xa0;&#xa0;&#xa0;&#xa0;Traço longo (10), espaço (5), traço curto (2), espaço (5), repete...
+    </p>
+  </body>
+</html></richcontent>
+</node>
+<node TEXT="Limites de Linhas e Junções" ID="ID_634323646" CREATED="1753751603113" MODIFIED="1753831483611" VSHIFT_QUANTITY="-35.25 pt"><richcontent TYPE="DETAILS">
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Controla a aparência das extremidades das linhas.
+    </p>
+  </body>
+</html></richcontent>
+<node TEXT="miter (default)" ID="ID_1030069110" CREATED="1753831492300" MODIFIED="1753831714482"/>
+<node TEXT="bevel" ID="ID_375095060" CREATED="1753831510739" MODIFIED="1753831515119"/>
+<node TEXT="round" ID="ID_468609185" CREATED="1753831516941" MODIFIED="1753831527869"/>
 </node>
 </node>
 </node>

@@ -447,6 +447,7 @@ function drawRubberbandShape(loc){
     contextEx11_2.lineTo(loc.x, loc.y);
     contextEx11_2.strokeStyle = strokeStyleColor.value;
     contextEx11_2.lineWidth = 2.5;
+    // contextEx11_2.setLineDash([4, 4, 10, 2]); // Define o estilo de tracejado
     contextEx11_2.stroke();
 }
 
@@ -523,6 +524,48 @@ guidewireCheckbox.addEventListener('change', (event) => {
 });
 
 drawGrid(contextEx11_2, '#ccc', 10, 10);
+
+// Desenhando ARCOS E CÍRCULOS
+const ex12_2 = document.getElementById('ex_12_2');
+let canvasEx12_2 = ex12_2.querySelector('canvas');
+let contextEx12_2 = canvasEx12_2.getContext('2d');
+
+contextEx12_2.beginPath();
+contextEx12_2.arc(canvasEx12_2.width / 2, canvasEx12_2.height / 2, 80, Math.PI / 4, Math.PI, false);
+contextEx12_2.lineWidth = 10;
+contextEx12_2.strokeStyle = 'blue';
+contextEx12_2.stroke();
+
+const size = 100;
+const radius = 40;
+
+contextEx12_2.beginPath();
+contextEx12_2.moveTo(50 + radius, 50); // Começa no canto superior esquerdo, com raio de arredondamento
+
+// Desenha os 4 lados do quadrado com cantos arredondados usando arcTo()
+contextEx12_2.arcTo(50 + size, 50, 50 + size, 50 + size, radius);  // Canto superior direito
+contextEx12_2.arcTo(50 + size, 50 + size, 50, 50 + size, radius);  // Canto inferior direito
+contextEx12_2.arcTo(50, 50 + size, 50, 50, radius);  // Canto inferior esquerdo
+contextEx12_2.arcTo(50, 50, 50 + radius, 50, radius);  // Canto superior esquerdo
+
+contextEx12_2.lineWidth = 10;
+contextEx12_2.fillStyle = 'rgba(0, 255, 0, 0.5)';
+contextEx12_2.fill();
+
+function drawCircle(x, y, context) {
+    let radius = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2, false);
+    context.closePath();
+    context.fillStyle = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    context.lineWidth = 10;
+    context.fill();
+}
+
+ex12_2.addEventListener('click', (event) => {
+    const loc = windowToCanvas(canvasEx12_2, event.clientX, event.clientY);
+    drawCircle(loc.x, loc.y, contextEx12_2);
+});
 
 // Função para desenhar uma grade
 function drawGrid(context, color, stepx, stepy) {
